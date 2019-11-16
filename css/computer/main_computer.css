@@ -1,0 +1,60 @@
+@media screen and (min-width: 500px) {
+     * {
+        -moz-box-sizing:border-box;
+        box-sizing: border-box;
+    }
+
+    html {
+        height: 100%;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+       }
+    
+    body {
+        background-color: black !important;
+        height: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .main
+    {
+        touch-action: none;
+        display: flex;
+        height: 100%;
+    }
+
+    .main_game
+    {
+        display: relative;
+        background-color: green;
+        height: 100%;
+        width: 75%;
+    }
+
+    .game_interaction
+    {
+        background-color: yellow;
+        height:calc(20% - 4px);
+        width: 100%;
+        min-height: 200px;
+    }
+
+    .resize_slice_v
+    {
+        width: 4px;
+        height: 100%;
+        background-color: red;
+        cursor: ew-resize;
+    }
+
+    .resize_slice_h
+    {
+        /* margin-top: -4px; */
+        width: 100%;
+        height: 4px;
+        background-color: red;
+        cursor: n-resize;
+    }
+}

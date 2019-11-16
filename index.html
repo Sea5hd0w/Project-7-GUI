@@ -1,0 +1,568 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="css/computer/main_computer.css">
+        <link rel="stylesheet" type="text/css" href="css/computer/game_computer.css">
+        <link rel="stylesheet" type="text/css" href="css/computer/chat_computer.css">
+
+        <!-- Bootstrap -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">        <!---->
+        <!---->
+        <title>Project-7</title>
+
+        <!-- JQuery -->
+        <script src="js_ressources/lib/jquery_3.4.1_jquery.min.js"></script>
+        <script src="js_ressources/lib/jquery_ui_1.9.1_jquery-ui.min.js"></script>
+    </head>
+    
+    
+
+    <body>
+        <div class="main">
+            <div class="main_game">
+                <div class="game_engine">
+                    <!-- <span>GAME</span> -->
+                    <div class="overlay_game_disable_event"></div>
+                    <iframe class="pixi_game_view" id="inlineFrameExample" title="Game" width="100%" height="100%" frameBorder="0" src="../Project-7/index.html"></iframe>
+                </div>
+                <div class="resize_slice_h" ></div>
+                <div class="game_interaction">
+                    <!-- <span>COMMAND</span> -->
+                    <button class="game_action" action='{"type":"next_turn", "mode":"tactic_colored"}'>Next turn</button>
+                    <button class="game_action" action='{"type":"action", "action":"nuclear bomb"}'>Attack 1</button>
+                    <button class="game_action" action='{"type":"action", "action":"round vortex"}'>Attack 2</button>
+                    <button class="game_action" action='{"type":"mode", "mode":"tactic"}'>Tactic</button>
+                    <button class="game_action" action='{"type":"mode", "mode":"tactic_colored"}'>Tactic colored</button>
+                    <button class="game_action" action='{"type":"mode", "mode":"colored"}'>Colored</button>
+                </div>
+            </div>
+            <div class="resize_slice_v" >
+            </div>
+            <div class="game_chat">
+                <div class="game_chat_content">
+                    <div class="game_chat_main_area">
+                        <div class="game_chat_main_area_options game_chat_right">
+                            <!-- <input type="button" onclick="toggleSidebar(true)">  -->
+                            
+                            <a class="cd-primary-nav-trigger" onclick="toggleSidebar(true)" href="#0">
+                                <span class="cd-menu-icon"></span>
+                            </a>
+                            
+                            <div class="chanel_select">
+                                <label class="container chanel_general">
+                                    <span class="chanel_name">General</span>
+                                    <input type="radio" name="radio" checked="checked">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="container chanel_team">
+                                    <span class="chanel_name">Team</span>
+                                    <input type="radio" name="radio">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="container chanel_room">
+                                    <span class="chanel_name">Room</span>
+                                    <input type="radio" name="radio">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="container chanel_spectator">
+                                    <span class="chanel_name">Spectator</span>
+                                    <input type="radio" name="radio">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="container chanel_public">
+                                    <span class="chanel_name">Public</span>
+                                    <input type="radio" name="radio">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="container chanel_personnal">
+                                    <span class="chanel_name">Personnal</span>
+                                    <input type="radio" name="radio">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="game_chat_main_area_reception game_chat_left" onclick="toggleSidebar(false)">
+                            <!-- TEMPLATE
+                            <div class="chat_message">
+                                <div class="avatar">
+                                    <img src="./media/images/avatar/avatar_ex1.png">
+                                </div>
+                                <div class="message">
+                                    <div class="info_message">
+                                        <div class="pseudo">
+                                            <span>Hyksos</span>
+                                        </div>
+                                        <div class="date_time">
+                                            <div class="date">
+                                                <span>10/11/2019</span>
+                                            </div>
+                                            <div class="time">
+                                                <span>15:38</span>
+                                            </div>
+                                        </div>
+                                    </div>   
+                                    <div class="main_message message_chanel_general">
+                                        <div class="chanel"></div>
+                                        <div title="10/11/2019 15:38" class="text">
+                                            Ceci est un message sur le chanel "general" 
+                                        </div>
+                                    </div>
+                                    <div class="main_message message_chanel_team">
+                                        <div class="chanel"></div>
+                                        <div title="10/11/2019 15:38" class="text">
+                                            Ceci est un message sur le chanel "team" 
+                                        </div>
+                                    </div>
+                                    <div class="main_message message_chanel_room">
+                                        <div class="chanel"></div>
+                                        <div title="10/11/2019 15:38" class="text">
+                                            Ceci est un message sur le chanel "room" 
+                                        </div>
+                                    </div>
+                                    <div class="main_message message_chanel_spectator">
+                                        <div class="chanel"></div>
+                                        <div title="10/11/2019 15:38" class="text">
+                                            Ceci est un message sur le chanel "spectator" 
+                                        </div>
+                                    </div>
+                                    <div class="main_message message_chanel_public">
+                                        <div class="chanel"></div>
+                                        <div title="10/11/2019 15:38" class="text">
+                                            Ceci est un message sur le chanel "public" 
+                                        </div>
+                                    </div>
+                                    <div class="main_message message_chanel_personnal">
+                                        <div class="chanel"></div>
+                                        <div title="10/11/2019 15:38" class="text">
+                                            Ceci est un message sur le chanel "personnal" 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
+
+
+                            <div class="chat_message">
+                                <div class="avatar">
+                                    <img src="./media/images/avatar/avatar_ex1.png">
+                                </div>
+                                <div class="message">
+                                    <div class="info_message">
+                                        <div class="pseudo">
+                                            <span>Hyksos</span>
+                                        </div>
+                                        <div class="date_time">
+                                            <div class="date">
+                                                <span>10/11/2019</span>
+                                            </div>
+                                            <div class="time">
+                                                <span>15:38</span>
+                                            </div>
+                                        </div>
+                                    </div>   
+                                    <div class="main_message message_chanel_general">
+                                        <div class="chanel"></div>
+                                        <div title="10/11/2019 15:38" class="text">
+                                            Ceci est un message sur le chanel "general" 
+                                        </div>
+                                    </div>
+                                    <div class="main_message message_chanel_team">
+                                        <div class="chanel"></div>
+                                        <div title="10/11/2019 15:38" class="text">
+                                            Ceci est un message sur le chanel "team" 
+                                        </div>
+                                    </div>
+                                    <div class="main_message message_chanel_room">
+                                        <div class="chanel"></div>
+                                        <div title="10/11/2019 15:38" class="text">
+                                            Ceci est un message sur le chanel "room" 
+                                        </div>
+                                    </div>
+                                    <div class="main_message message_chanel_spectator">
+                                        <div class="chanel"></div>
+                                        <div title="10/11/2019 15:38" class="text">
+                                            Ceci est un message sur le chanel "spectator" 
+                                        </div>
+                                    </div>
+                                    <div class="main_message message_chanel_public">
+                                        <div class="chanel"></div>
+                                        <div title="10/11/2019 15:38" class="text">
+                                            Ceci est un message sur le chanel "public" 
+                                        </div>
+                                    </div>
+                                    <div class="main_message message_chanel_personnal">
+                                        <div class="chanel"></div>
+                                        <div title="10/11/2019 15:38" class="text">
+                                            Ceci est un message sur le chanel "personnal" 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+                            <div class="chat_message">
+                                    <div class="avatar">
+                                        <img src="./media/images/avatar/avatar_ex2.bmp">
+                                    </div>
+                                    <div class="message">
+                                        <div class="info_message">
+                                            <div class="pseudo">
+                                                <span>Zaintzeka</span>
+                                            </div>
+                                            <div class="date_time">
+                                                <div class="date">
+                                                    <span>10/11/2019</span>
+                                                </div>
+                                                <div class="time">
+                                                    <span>15:42</span>
+                                                </div>
+                                            </div>
+                                        </div>        
+                                        <div class="main_message message_chanel_general">
+                                            <div class="chanel"></div>
+                                            <div title="10/11/2019 15:42" class="text">
+                                                Ceci est un message sur le chanel "general" 
+                                            </div>
+                                        </div>
+                                        <div class="main_message message_chanel_team">
+                                            <div class="chanel"></div>
+                                            <div title="10/11/2019 15:42" class="text">
+                                                Ceci est un message sur le chanel "team" 
+                                            </div>
+                                        </div>
+                                        <div class="main_message message_chanel_room">
+                                            <div class="chanel"></div>
+                                            <div title="10/11/2019 15:42" class="text">
+                                                Ceci est un message sur le chanel "room" 
+                                            </div>
+                                        </div>
+                                        <div class="main_message message_chanel_spectator">
+                                            <div class="chanel"></div>
+                                            <div title="10/11/2019 15:42" class="text">
+                                                Ceci est un message sur le chanel "spectator" 
+                                            </div>
+                                        </div>
+                                        <div class="main_message message_chanel_public">
+                                            <div class="chanel"></div>
+                                            <div title="10/11/2019 15:42" class="text">
+                                                Ceci est un message sur le chanel "public" 
+                                            </div>
+                                        </div>
+                                        <div class="main_message message_chanel_personnal">
+                                            <div class="chanel"></div>
+                                            <div title="10/11/2019 15:42" class="text">
+                                                Ceci est un message sur le chanel "personnal" 
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+    
+    
+    
+                                <div class="chat_message">
+                                        <div class="avatar">
+                                            <img src="./media/images/avatar/avatar_ex1.png">
+                                        </div>
+                                        <div class="message">
+                                            <div class="info_message">
+                                                <div class="pseudo">
+                                                    <span>Hyksos</span>
+                                                </div>
+                                                <div class="date_time">
+                                                    <div class="date">
+                                                        <span>10/11/2019</span>
+                                                    </div>
+                                                    <div class="time">
+                                                        <span>15:45</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="main_message message_chanel_general">
+                                                <div class="chanel"></div>
+                                                <div title="10/11/2019 15:45" class="text">
+                                                    Ceci est un message sur le chanel "general" 
+                                                </div>
+                                            </div>
+                                            <div class="main_message message_chanel_team">
+                                                <div class="chanel"></div>
+                                                <div title="10/11/2019 15:45" class="text">
+                                                    Ceci est un message sur le chanel "team" 
+                                                </div>
+                                            </div>
+                                            <div class="main_message message_chanel_room">
+                                                <div class="chanel"></div>
+                                                <div title="10/11/2019 15:45" class="text">
+                                                    Ceci est un message sur le chanel "room" 
+                                                </div>
+                                            </div>
+                                            <div class="main_message message_chanel_spectator">
+                                                <div class="chanel"></div>
+                                                <div title="10/11/2019 15:45" class="text">
+                                                    Ceci est un message sur le chanel "spectator" 
+                                                </div>
+                                            </div>
+                                            <div class="main_message message_chanel_public">
+                                                <div class="chanel"></div>
+                                                <div title="10/11/2019 15:45" class="text">
+                                                    Ceci est un message sur le chanel "public" 
+                                                </div>
+                                            </div>
+                                            <div class="main_message message_chanel_personnal">
+                                                <div class="chanel"></div>
+                                                <div title="10/11/2019 15:45" class="text">
+                                                    Ceci est un message sur le chanel "personnal" 
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+        
+        
+        
+            
+
+                                    <div class="chat_message">
+                                            <div class="avatar">
+                                                <img src="./media/images/avatar/avatar_ex2.bmp">
+                                            </div>
+                                            <div class="message">
+                                                <div class="info_message">
+                                                    <div class="pseudo">
+                                                        <span>Zaintzeka</span>
+                                                    </div>
+                                                    <div class="date_time">
+                                                        <div class="date">
+                                                            <span>10/11/2019</span>
+                                                        </div>
+                                                        <div class="time">
+                                                            <span>15:54</span>
+                                                        </div>
+                                                    </div>
+                                                </div>                
+                                                <div class="main_message message_chanel_general">
+                                                    <div class="chanel"></div>
+                                                    <div title="10/11/2019 15:54" class="text">
+                                                        Ceci est un message sur le chanel "general" 
+                                                    </div>
+                                                </div>
+                                                <div class="main_message message_chanel_team">
+                                                    <div class="chanel"></div>
+                                                    <div title="10/11/2019 15:54" class="text">
+                                                        Ceci est un message sur le chanel "team" 
+                                                    </div>
+                                                </div>
+                                                <div class="main_message message_chanel_room">
+                                                    <div class="chanel"></div>
+                                                    <div title="10/11/2019 15:54" class="text">
+                                                        Ceci est un message sur le chanel "room" 
+                                                    </div>
+                                                </div>
+                                                <div class="main_message message_chanel_spectator">
+                                                    <div class="chanel"></div>
+                                                    <div title="10/11/2019 15:54" class="text">
+                                                        Ceci est un message sur le chanel "spectator" 
+                                                    </div>
+                                                </div>
+                                                <div class="main_message message_chanel_public">
+                                                    <div class="chanel"></div>
+                                                    <div title="10/11/2019 15:54" class="text">
+                                                        Ceci est un message sur le chanel "public" 
+                                                    </div>
+                                                </div>
+                                                <div class="main_message message_chanel_personnal">
+                                                    <div class="chanel"></div>
+                                                    <div title="10/11/2019 15:54" class="text">
+                                                        Ceci est un message sur le chanel "personnal" 
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+            
+            
+            
+            
+
+
+
+
+                                        <div class="chat_message">
+                                                <div class="avatar">
+                                                    <img src="./media/images/avatar/avatar_ex1.png">
+                                                </div>
+                                                <div class="message">
+                                                    <div class="info_message">
+                                                        <div class="pseudo">
+                                                            <span>Hyksos</span>
+                                                        </div>
+                                                        <div class="date_time">
+                                                            <div class="date">
+                                                                <span>10/11/2019</span>
+                                                            </div>
+                                                            <div class="time">
+                                                                <span>15:55</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="main_message message_chanel_general">
+                                                        <div class="chanel"></div>
+                                                        <div title="10/11/2019 15:55" class="text">
+                                                            Ceci est un message sur le chanel "general" 
+                                                        </div>
+                                                    </div>
+                                                    <div class="main_message message_chanel_team">
+                                                        <div class="chanel"></div>
+                                                        <div title="10/11/2019 15:55" class="text">
+                                                            Ceci est un message sur le chanel "team" 
+                                                        </div>
+                                                    </div>
+                                                    <div class="main_message message_chanel_room">
+                                                        <div class="chanel"></div>
+                                                        <div title="10/11/2019 15:55" class="text">
+                                                            Ceci est un message sur le chanel "room" 
+                                                        </div>
+                                                    </div>
+                                                    <div class="main_message message_chanel_spectator">
+                                                        <div class="chanel"></div>
+                                                        <div title="10/11/2019 15:55" class="text">
+                                                            Ceci est un message sur le chanel "spectator" 
+                                                        </div>
+                                                    </div>
+                                                    <div class="main_message message_chanel_public">
+                                                        <div class="chanel"></div>
+                                                        <div title="10/11/2019 15:55" class="text">
+                                                            Ceci est un message sur le chanel "public" 
+                                                        </div>
+                                                    </div>
+                                                    <div class="main_message message_chanel_personnal">
+                                                        <div class="chanel"></div>
+                                                        <div title="10/11/2019 15:55" class="text">
+                                                            Ceci est un message sur le chanel "personnal" 
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                
+                
+                
+                
+
+
+
+                                            <div class="chat_message">
+                                                    <div class="avatar">
+                                                        <img src="./media/images/avatar/avatar_ex2.bmp">
+                                                    </div>
+                                                    <div class="message">
+                                                        <div class="info_message">
+                                                            <div class="pseudo">
+                                                                <span>Zaintzeka</span>
+                                                            </div>
+                                                            <div class="date_time">
+                                                                <div class="date">
+                                                                    <span>10/11/2019</span>
+                                                                </div>
+                                                                <div class="time">
+                                                                    <span>15:59</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="main_message message_chanel_general">
+                                                            <div class="chanel"></div>
+                                                            <div title="10/11/2019 15:59" class="text">
+                                                                Ceci est un message sur le chanel "general" 
+                                                            </div>
+                                                        </div>
+                                                        <div class="main_message message_chanel_team">
+                                                            <div class="chanel"></div>
+                                                            <div title="10/11/2019 15:59" class="text">
+                                                                Ceci est un message sur le chanel "team" 
+                                                            </div>
+                                                        </div>
+                                                        <div class="main_message message_chanel_room">
+                                                            <div class="chanel"></div>
+                                                            <div title="10/11/2019 15:59" class="text">
+                                                                Ceci est un message sur le chanel "room" 
+                                                            </div>
+                                                        </div>
+                                                        <div class="main_message message_chanel_spectator">
+                                                            <div class="chanel"></div>
+                                                            <div title="10/11/2019 15:59" class="text">
+                                                                Ceci est un message sur le chanel "spectator" 
+                                                            </div>
+                                                        </div>
+                                                        <div class="main_message message_chanel_public">
+                                                            <div class="chanel"></div>
+                                                            <div title="10/11/2019 15:59" class="text">
+                                                                Ceci est un message sur le chanel "public" 
+                                                            </div>
+                                                        </div>
+                                                        <div class="main_message message_chanel_personnal">
+                                                            <div class="chanel"></div>
+                                                            <div title="10/11/2019 15:59" class="text">
+                                                                Ceci est un message sur le chanel "personnal" 
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                    
+                    
+                    
+                    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            <script>
+                                //Scrollbar at bottom
+
+                            </script>
+                        </div>
+                    </div>
+                    <div class="game_chat_send_area">
+                        <div class="game_chat_send_area_send game_chat_right">
+                            <img class="svg" src="media/icons/paper-plane.svg">
+                        </div>
+                        <div class="game_chat_send_area_write game_chat_left">
+                            <textarea rows="1" type="text" class="autoExpand" rows='3' data-min-rows='3' placeholder="Type message..."></textarea>
+                        </div>
+                    </div>
+                </div>
+                <img src="media/images/chat/background_test_forest.bmp" class="game_chat_background_img" alt="">
+            </div>
+        </div> 
+
+
+        <!-- Bootstrap -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>        
+
+        <script src="js_ressources/resize.js"></script>
+        <script src="js_ressources/communication_gui_game.js"></script>
+        <script src="js_ressources/lib/auto_replace_svg.js"></script>
+        <script src="js_ressources/lib/auto_expand_textarea.js"></script>
+        <script src="js_ressources/lib/expand_sidebar_chat.js"></script>
+
+        <script src="js_ressources/lib/plain-draggable.min.js"></script>
+    </body>
+</html>
